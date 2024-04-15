@@ -18,6 +18,7 @@
 		F32877422BC908B9006EF703 /* WishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32877402BC908B9006EF703 /* WishListTableViewCell.swift */; };
 		F32877432BC908B9006EF703 /* WishListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32877412BC908B9006EF703 /* WishListTableViewCell.xib */; };
 		F32877452BC93662006EF703 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32877442BC93662006EF703 /* NetworkingManager.swift */; };
+		F32877482BCD13B5006EF703 /* ImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32877472BCD13B5006EF703 /* ImageView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F32877402BC908B9006EF703 /* WishListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewCell.swift; sourceTree = "<group>"; };
 		F32877412BC908B9006EF703 /* WishListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListTableViewCell.xib; sourceTree = "<group>"; };
 		F32877442BC93662006EF703 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		F32877472BCD13B5006EF703 /* ImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +70,10 @@
 			children = (
 				F32877212BC8F8B0006EF703 /* AppDelegate.swift */,
 				F32877232BC8F8B0006EF703 /* SceneDelegate.swift */,
+				F32877492BCD13C4006EF703 /* Extensions */,
 				F32877392BC904E8006EF703 /* Model */,
+				F328774A2BCD173E006EF703 /* View */,
 				F328773A2BC904FB006EF703 /* Controller */,
-				F32877272BC8F8B0006EF703 /* Main.storyboard */,
-				F328773F2BC9085B006EF703 /* Cell */,
 				F328772A2BC8F8B1006EF703 /* Assets.xcassets */,
 				F328772C2BC8F8B1006EF703 /* LaunchScreen.storyboard */,
 				F328772F2BC8F8B1006EF703 /* Info.plist */,
@@ -104,6 +106,23 @@
 				F32877412BC908B9006EF703 /* WishListTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		F32877492BCD13C4006EF703 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F32877472BCD13B5006EF703 /* ImageView+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F328774A2BCD173E006EF703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F32877272BC8F8B0006EF703 /* Main.storyboard */,
+				F328773F2BC9085B006EF703 /* Cell */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +201,7 @@
 				F32877382BC90376006EF703 /* WishListViewController.swift in Sources */,
 				F32877422BC908B9006EF703 /* WishListTableViewCell.swift in Sources */,
 				F32877222BC8F8B0006EF703 /* AppDelegate.swift in Sources */,
+				F32877482BCD13B5006EF703 /* ImageView+.swift in Sources */,
 				F32877242BC8F8B0006EF703 /* SceneDelegate.swift in Sources */,
 				F32877362BC901AD006EF703 /* RemoteProduct.swift in Sources */,
 				F32877452BC93662006EF703 /* NetworkingManager.swift in Sources */,
