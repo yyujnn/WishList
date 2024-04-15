@@ -33,6 +33,10 @@ class ViewController: UIViewController {
     
     // 위시 리스트 보기 Btn
     @IBAction func tappedPresentWishList(_ sender: UIButton) {
+        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "WishListViewController") else { return }
+        
+        self.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true)
     }
     
     func fetchProduct() {

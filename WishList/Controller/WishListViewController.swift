@@ -11,7 +11,7 @@ class WishListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
    
-    var tempWishList: [RemoteProduct] = []
+    var tempWishList: [Product] = [product1, product2]
     
     override func viewDidLoad() {
         super.viewDidLoad()

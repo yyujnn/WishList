@@ -22,7 +22,7 @@ class WishListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func bind(_ product: RemoteProduct) {
+    func bind(_ product: Product) {
         idLabel.text = "\(product.id)"
         titleLabel.text = product.title
         priceLabel.text = "\(product.price)"
