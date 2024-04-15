@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     
     // 다른 상품 보기 Btn
     @IBAction func tappedSkipButton(_ sender: UIButton) {
+        fetchProduct()
     }
     
     // 위시 리스트 보기 Btn

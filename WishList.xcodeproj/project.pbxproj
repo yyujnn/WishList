@@ -72,9 +72,8 @@
 				F32877232BC8F8B0006EF703 /* SceneDelegate.swift */,
 				F32877492BCD13C4006EF703 /* Extensions */,
 				F32877392BC904E8006EF703 /* Model */,
+				F328774A2BCD173E006EF703 /* View */,
 				F328773A2BC904FB006EF703 /* Controller */,
-				F32877272BC8F8B0006EF703 /* Main.storyboard */,
-				F328773F2BC9085B006EF703 /* Cell */,
 				F328772A2BC8F8B1006EF703 /* Assets.xcassets */,
 				F328772C2BC8F8B1006EF703 /* LaunchScreen.storyboard */,
 				F328772F2BC8F8B1006EF703 /* Info.plist */,
@@ -115,6 +114,15 @@
 				F32877472BCD13B5006EF703 /* ImageView+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F328774A2BCD173E006EF703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F32877272BC8F8B0006EF703 /* Main.storyboard */,
+				F328773F2BC9085B006EF703 /* Cell */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
