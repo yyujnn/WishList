@@ -9,15 +9,23 @@ import UIKit
 
 class WishListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    func bind(_ product: RemoteProduct) {
+        idLabel.text = "\(product.id)"
+        titleLabel.text = product.title
+        priceLabel.text = "\(product.price)"
     }
     
 }

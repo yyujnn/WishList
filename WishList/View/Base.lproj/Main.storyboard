@@ -46,7 +46,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldh-jg-noM">
-                                <rect key="frame" x="16" y="753" width="361" height="45"/>
+                                <rect key="frame" x="16" y="758" width="361" height="45"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="BMX-MF-TTL"/>
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XYZ-OB-qYX">
-                                <rect key="frame" x="16" y="688" width="361" height="45"/>
+                                <rect key="frame" x="16" y="693" width="361" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4X1-91-XSi">
                                         <rect key="frame" x="0.0" y="0.0" width="170.66666666666666" height="45"/>
@@ -92,7 +92,7 @@
                         <constraints>
                             <constraint firstItem="XYZ-OB-qYX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0Hn-oA-wth"/>
                             <constraint firstItem="ldh-jg-noM" firstAttribute="top" secondItem="XYZ-OB-qYX" secondAttribute="bottom" constant="20" id="8Vn-HF-ZWH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ldh-jg-noM" secondAttribute="bottom" constant="20" id="9VL-Fw-RJg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ldh-jg-noM" secondAttribute="bottom" constant="15" id="9VL-Fw-RJg"/>
                             <constraint firstItem="kfU-08-92m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JEc-wg-gQs"/>
                             <constraint firstItem="KPT-Iw-dcW" firstAttribute="top" secondItem="kfU-08-92m" secondAttribute="bottom" constant="25" id="Qpq-U0-y5s"/>
                             <constraint firstItem="kfU-08-92m" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yvj-hw-spu"/>
@@ -133,6 +133,9 @@
                         <viewLayoutGuide key="safeArea" id="gII-Wp-u8D"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="D1F-Ao-d32" id="pth-hb-9b9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1j-V4-7SX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
