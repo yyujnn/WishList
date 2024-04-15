@@ -25,7 +25,7 @@ class WishListTableViewCell: UITableViewCell {
     func bind(_ product: Product) {
         idLabel.text = "\(product.id)"
         titleLabel.text = product.title
-        priceLabel.text = "\(product.price)"
+        priceLabel.text = "\(product.price)$"
     }
     
 }
