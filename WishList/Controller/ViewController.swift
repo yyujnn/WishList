@@ -21,18 +21,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchProduct()
+        fetchRemoteProduct()
         
     }
     
     // 위시 리스트 담기 Btn
     @IBAction func tappedSaveProductButton(_ sender: UIButton) {
         coreDataManager.saveWishProduct()
+        coreDataManager.fetchCoreData()
     }
     
     // 다른 상품 보기 Btn
     @IBAction func tappedSkipButton(_ sender: UIButton) {
-        fetchProduct()
+        fetchRemoteProduct()
     }
     
     // 위시 리스트 보기 Btn
@@ -43,7 +44,7 @@ class ViewController: UIViewController {
         self.present(nextVC, animated: true)
     }
     
-    func fetchProduct() {
+    func fetchRemoteProduct() {
         networkingManager.fetchRemoteProduct { result in
             switch result {
             case .success(let product):
