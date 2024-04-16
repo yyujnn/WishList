@@ -16,26 +16,35 @@ class ViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     
     let networkingManager = NetworkingManager()
+    let coreDataManager = CoreDataManager()
+    var currentProduct: RemoteProduct?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchProduct()
+        fetchRemoteProduct()
+        
     }
     
     // 위시 리스트 담기 Btn
     @IBAction func tappedSaveProductButton(_ sender: UIButton) {
+        coreDataManager.saveWishProduct()
+        CoreDataManager.fetchCoreData()
     }
     
     // 다른 상품 보기 Btn
     @IBAction func tappedSkipButton(_ sender: UIButton) {
-        fetchProduct()
+        fetchRemoteProduct()
     }
     
     // 위시 리스트 보기 Btn
     @IBAction func tappedPresentWishList(_ sender: UIButton) {
+        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "WishListViewController") else { return }
+        
+        self.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true)
     }
     
-    func fetchProduct() {
+    func fetchRemoteProduct() {
         networkingManager.fetchRemoteProduct { result in
             switch result {
             case .success(let product):
@@ -44,7 +53,7 @@ class ViewController: UIViewController {
                     self.imageView.loadImage(url: product.thumbnail)
                     self.titleLabel.text = product.title
                     self.descriptionLabel.text = product.description
-                    self.priceLabel.text = "\(product.price)"
+                    self.priceLabel.text = product.price.formatAsCurrency()
                 }
             case .failure(let error):
                 print("Error fetching product: \(error)")
