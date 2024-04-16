@@ -21,22 +21,30 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchRemoteProduct()
         
+        fetchRemoteProduct()
     }
     
-    // 위시 리스트 담기 Btn
+    // MARK: -  위시 리스트 담기 Btn
     @IBAction func tappedSaveProductButton(_ sender: UIButton) {
-        coreDataManager.saveWishProduct()
-        CoreDataManager.fetchCoreData()
+        guard let product = currentProduct else { return }
+        print("위시리스트 담는 상품: \(product)")
+        coreDataManager.saveWishProduct(product: product) { success in
+            if success {
+                print("상품이 위시 리스트에 추가되었습니다.")
+            } else {
+                print("상품을 위시 리스트에 추가하는 데 실패했습니다.")
+            }
+        }
+        // CoreDataManager.fetchCoreData()
     }
     
-    // 다른 상품 보기 Btn
+    // MARK: - 다른 상품 보기 Btn
     @IBAction func tappedSkipButton(_ sender: UIButton) {
         fetchRemoteProduct()
     }
     
-    // 위시 리스트 보기 Btn
+    // MARK: - 위시 리스트 보기 Btn
     @IBAction func tappedPresentWishList(_ sender: UIButton) {
         guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "WishListViewController") else { return }
         
@@ -44,10 +52,14 @@ class ViewController: UIViewController {
         self.present(nextVC, animated: true)
     }
     
+    // MARK: - 데이터 가져와 컴포넌트와 연결
     func fetchRemoteProduct() {
         networkingManager.fetchRemoteProduct { result in
             switch result {
             case .success(let product):
+                // 현재 상품 업데이트
+                self.currentProduct = product
+                
                 // UI 요소들과 데이터를 연결하여 표시
                 DispatchQueue.main.async {
                     self.imageView.loadImage(url: product.thumbnail)

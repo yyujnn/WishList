@@ -13,7 +13,7 @@ class CoreDataManager {
     static let entityName = "Product" // ProductEntity?
     
     // viewContext 가져오기 --> CRUD
-    private static let context: NSManagedObjectContext? = {
+    static let context: NSManagedObjectContext? = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             print("AppDelegate가 초기화되지 않았습니다.")
             return nil
@@ -22,19 +22,23 @@ class CoreDataManager {
     }()
     
     // MARK: - SAVE: CoreData에 상품 저장
-    func saveWishProduct() {
-        guard let context = CoreDataManager.context else { return }
-        guard let entity = NSEntityDescription.entity(forEntityName: CoreDataManager.entityName, in: context) else { return }
+    func saveWishProduct(product: RemoteProduct, completion: @escaping (Bool) -> Void) {
+        guard let context = CoreDataManager.context else {
+            completion(false)
+            return
+        }
         
-        let object = NSManagedObject(entity: entity, insertInto: context)
-        object.setValue(1, forKey: "id")
-        object.setValue("CoreData 테스트", forKey: "title")
-        object.setValue(30, forKey: "price")
+        let wishProduct = Product(context: context)
+        wishProduct.id = Int64(product.id)
+        wishProduct.title = product.title
+        wishProduct.price = product.price
         
         do {
             try context.save()
+            completion(true)
         } catch {
             print("error: \(error.localizedDescription)")
+            completion(false)
         }
     }
 
@@ -47,10 +51,9 @@ class CoreDataManager {
            let productList = try context.fetch(fetchRequest)
             productList.forEach {
                 print($0.id)
-                print($0.title)
+                print($0.title ?? "title")
                 print($0.price)
             }
-            
             return productList
         } catch {
             print("코어 데이터 fetch error: \(error.localizedDescription)")
@@ -58,21 +61,35 @@ class CoreDataManager {
         }
     }
     
-    // MARK: - DELETE
-    func deleteData(id: Int) {
-        guard let context = CoreDataManager.context else { return }
+    // MARK: - DELETE: CoreData에서 상품 삭제
+    func deleteProduct(withId id: Int64, completion: @escaping (Bool) -> Void) {
+        guard let context = CoreDataManager.context else {
+            completion(false)
+            return
+        }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: CoreDataManager.entityName)
-        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        let fetchRequest = NSFetchRequest<Product>(entityName: CoreDataManager.entityName)
+        fetchRequest.predicate = NSPredicate(format: "id == %lld", id)
         
         do {
-            guard let result = try? context.fetch(fetchRequest),
-                  let object = result.first as? NSManagedObject else { return }
-            context.delete(object)
-            
+            let products = try context.fetch(fetchRequest)
+            for product in products {
+                context.delete(product)
+            }
             try context.save()
+            completion(true)
         } catch {
-            print("error: \(error.localizedDescription)")
+            print("Error deleting product: \(error.localizedDescription)")
+            completion(false)
         }
     }
+    /*
+    // delete 사용
+    coreDataManager.deleteProduct(withId: 1) { success in
+    if success {
+        print("상품 삭제 성공")
+    } else {
+        print("상품 삭제 실패")
+    }
+     */
 }
