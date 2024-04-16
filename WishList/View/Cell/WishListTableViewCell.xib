@@ -16,8 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="79" translatesAutoresizingMaskIntoConstraints="NO" id="a9f-YD-JDl">
-                        <rect key="frame" x="16" y="11.999999999999998" width="286" height="20.333333333333329"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="a9f-YD-JDl">
+                        <rect key="frame" x="16" y="11.999999999999998" width="188" height="20.333333333333329"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[1]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGJ-a6-wOh">
                                 <rect key="frame" x="0.0" y="0.0" width="19.666666666666668" height="20.333333333333332"/>
@@ -26,13 +26,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPhone 9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H36-gZ-T5L">
-                                <rect key="frame" x="98.666666666666686" y="0.0" width="67" height="20.333333333333332"/>
+                                <rect key="frame" x="49.666666666666671" y="0.0" width="67" height="20.333333333333332"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="549$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJe-Rg-ryx">
-                                <rect key="frame" x="244.66666666666671" y="0.0" width="41.333333333333343" height="20.333333333333332"/>
+                                <rect key="frame" x="146.66666666666666" y="0.0" width="41.333333333333343" height="20.333333333333332"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="a9f-YD-JDl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4Nk-3k-2My"/>
-                    <constraint firstItem="a9f-YD-JDl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xdd-Ez-zbR"/>
+                    <constraint firstItem="a9f-YD-JDl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hV9-UM-D04"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -29,7 +29,7 @@ class CoreDataManager {
         let object = NSManagedObject(entity: entity, insertInto: context)
         object.setValue(1, forKey: "id")
         object.setValue("CoreData 테스트", forKey: "title")
-        object.setValue(30.0, forKey: "price")
+        object.setValue(30, forKey: "price")
         
         do {
             try context.save()
@@ -76,5 +76,3 @@ class CoreDataManager {
         }
     }
 }
-
-

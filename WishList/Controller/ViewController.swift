@@ -53,7 +53,7 @@ class ViewController: UIViewController {
                     self.imageView.loadImage(url: product.thumbnail)
                     self.titleLabel.text = product.title
                     self.descriptionLabel.text = product.description
-                    self.priceLabel.text = "\(product.price)$"
+                    self.priceLabel.text = product.price.formatAsCurrency()
                 }
             case .failure(let error):
                 print("Error fetching product: \(error)")
