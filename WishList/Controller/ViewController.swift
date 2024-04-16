@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     
     let networkingManager = NetworkingManager()
-    let coreDataManager = CoreDataManager()
     var currentProduct: RemoteProduct?
     
     override func viewDidLoad() {
@@ -29,7 +28,7 @@ class ViewController: UIViewController {
     @IBAction func tappedSaveProductButton(_ sender: UIButton) {
         guard let product = currentProduct else { return }
         print("위시리스트 담는 상품: \(product)")
-        coreDataManager.saveWishProduct(product: product) { success in
+        CoreDataManager.saveWishProduct(product: product) { success in
             if success {
                 print("상품이 위시 리스트에 추가되었습니다.")
             } else {
