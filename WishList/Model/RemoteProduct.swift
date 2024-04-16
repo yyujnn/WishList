@@ -16,5 +16,3 @@ struct RemoteProduct: Decodable {
     let price: Double
     let thumbnail: URL
 }
-
-// --> 코어 데이터 모델 추가하기(id, price, title)

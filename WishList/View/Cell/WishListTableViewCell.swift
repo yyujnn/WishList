@@ -22,8 +22,8 @@ class WishListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func bind(_ product: Product) {
-        idLabel.text = "\(product.id)"
+    func bind(_ product: TempProduct) {
+        idLabel.text = "[\(product.id)]"
         titleLabel.text = product.title
         priceLabel.text = "\(product.price)$"
     }

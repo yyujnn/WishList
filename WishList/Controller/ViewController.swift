@@ -16,14 +16,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     
     let networkingManager = NetworkingManager()
+    let coreDataManager = CoreDataManager()
+    var currentProduct: RemoteProduct?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchProduct()
+        
     }
     
     // 위시 리스트 담기 Btn
     @IBAction func tappedSaveProductButton(_ sender: UIButton) {
+        coreDataManager.saveWishProduct()
     }
     
     // 다른 상품 보기 Btn
