@@ -11,12 +11,13 @@ class WishListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
    
-    var tempWishList: [TempProduct] = [product1, product2]
+    var wishList: [Product] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureTableView()
+        loadWishList()
     }
     
     func configureTableView() {
@@ -26,17 +27,23 @@ class WishListViewController: UIViewController {
         let nibName = UINib(nibName: "WishListTableViewCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "WishListTableViewCell")
     }
+    
+    func loadWishList() {
+        wishList = CoreDataManager.fetchCoreData()
+        tableView.reloadData()
+    }
+    
 }
 extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tempWishList.count
+        wishList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WishListTableViewCell",  for: indexPath) as? WishListTableViewCell else { return UITableViewCell() }
         
-        cell.bind(tempWishList[indexPath.row])
+        cell.bind(wishList[indexPath.row])
         return cell
         
     }

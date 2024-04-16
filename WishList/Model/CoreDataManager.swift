@@ -10,10 +10,10 @@ import CoreData
 
 class CoreDataManager {
     
-    let entityName = "Product" // ProductEntity?
+    static let entityName = "Product" // ProductEntity?
     
     // viewContext 가져오기 --> CRUD
-    private let context: NSManagedObjectContext? = {
+    private static let context: NSManagedObjectContext? = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             print("AppDelegate가 초기화되지 않았습니다.")
             return nil
@@ -23,8 +23,8 @@ class CoreDataManager {
     
     // MARK: - SAVE: CoreData에 상품 저장
     func saveWishProduct() {
-        guard let context = context else { return }
-        guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: context) else { return }
+        guard let context = CoreDataManager.context else { return }
+        guard let entity = NSEntityDescription.entity(forEntityName: CoreDataManager.entityName, in: context) else { return }
         
         let object = NSManagedObject(entity: entity, insertInto: context)
         object.setValue(1, forKey: "id")
@@ -39,27 +39,30 @@ class CoreDataManager {
     }
 
     // MARK: - READ: CoreData에서 상품 정보 불러오기
-    func fetchCoreData() {
-        guard let context = context else { return }
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+    static func fetchCoreData() -> [Product] {
+        guard let context = context else { return [] }
+        let fetchRequest = NSFetchRequest<Product>(entityName: entityName)
         
         do {
-            guard let productList = try context.fetch(fetchRequest) as? [Product] else { return }
+           let productList = try context.fetch(fetchRequest)
             productList.forEach {
                 print($0.id)
                 print($0.title)
                 print($0.price)
             }
+            
+            return productList
         } catch {
-            print("error: \(error.localizedDescription)")
+            print("코어 데이터 fetch error: \(error.localizedDescription)")
+            return []
         }
     }
     
     // MARK: - DELETE
     func deleteData(id: Int) {
-        guard let context = context else { return }
+        guard let context = CoreDataManager.context else { return }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: entityName)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: CoreDataManager.entityName)
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         
         do {

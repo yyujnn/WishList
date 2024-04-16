@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     // 위시 리스트 담기 Btn
     @IBAction func tappedSaveProductButton(_ sender: UIButton) {
         coreDataManager.saveWishProduct()
-        coreDataManager.fetchCoreData()
+        CoreDataManager.fetchCoreData()
     }
     
     // 다른 상품 보기 Btn
