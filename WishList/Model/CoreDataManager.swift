@@ -83,13 +83,4 @@ class CoreDataManager {
             completion(false)
         }
     }
-    /*
-    // delete 사용
-    CoreDataManager.deleteProduct(withId: 1) { success in
-    if success {
-        print("상품 삭제 성공")
-    } else {
-        print("상품 삭제 실패")
-    }
-     */
 }

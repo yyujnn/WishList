@@ -71,6 +71,4 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    
 }
