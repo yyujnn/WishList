@@ -16,7 +16,7 @@ class NetworkingManager {
         let productID = Int.random(in: 1 ... 100)
         
         // URL 생성하여 RemoteProduct 가져오기
-        if let url = URL(string: "https://dummyjson.com/products/\(productID)") {
+        if let url = URL(string: "\(url)\(productID)") {
             // URLSessionDataTask 사용하여 비동기적으로 데이터 요청
             let task = session.dataTask(with: url) { (data, response, error) in
                 if let error = error {

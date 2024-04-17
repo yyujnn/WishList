@@ -22,7 +22,7 @@ class CoreDataManager {
     }()
     
     // MARK: - SAVE: CoreData에 상품 저장
-    func saveWishProduct(product: RemoteProduct, completion: @escaping (Bool) -> Void) {
+    static func saveWishProduct(product: RemoteProduct, completion: @escaping (Bool) -> Void) {
         guard let context = CoreDataManager.context else {
             completion(false)
             return
@@ -62,7 +62,7 @@ class CoreDataManager {
     }
     
     // MARK: - DELETE: CoreData에서 상품 삭제
-    func deleteProduct(withId id: Int64, completion: @escaping (Bool) -> Void) {
+    static func deleteProduct(withId id: Int64, completion: @escaping (Bool) -> Void) {
         guard let context = CoreDataManager.context else {
             completion(false)
             return
@@ -83,13 +83,4 @@ class CoreDataManager {
             completion(false)
         }
     }
-    /*
-    // delete 사용
-    coreDataManager.deleteProduct(withId: 1) { success in
-    if success {
-        print("상품 삭제 성공")
-    } else {
-        print("상품 삭제 실패")
-    }
-     */
 }

@@ -34,6 +34,7 @@ class WishListViewController: UIViewController {
     }
     
 }
+
 extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,4 +49,23 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    // MARK: - cell 삭제
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // 코어 데이터에서 데이터에서 셀 삭제
+            // 선택한 셀 id 찾기!..
+            let selectedProduct = wishList[indexPath.row]
+            let productId = selectedProduct.id
+            
+            // delete 사용
+            CoreDataManager.deleteProduct(withId: productId) { success in
+                if success {
+                    print("상품 삭제 성공")
+                    self.loadWishList()
+                } else {
+                    print("상품 삭제 실패")
+                }
+            }
+        }
+    }
 }
