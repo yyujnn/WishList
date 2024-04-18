@@ -11,7 +11,7 @@
 **`step1`**
 - JSON Dummy API를 활용하여, 상품 정보 노출
 - URLSession 사용
-- - CoreData 모델링
+  - CoreData 모델링
 
 <br>
 
@@ -25,3 +25,7 @@
 -  ScrollView 적용
 -  Pull to refresh 기능
 
+<br>
+
+## page
+<img width="700" alt="image" src="https://github.com/yyujnn/WishList/assets/129912074/f479d3f4-0211-481e-b17c-4457b7b3b4b5">
