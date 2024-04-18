@@ -18,8 +18,10 @@ class WishListViewController: UIViewController {
         
         configureTableView()
         loadWishList()
+        setRefreshControl()
     }
     
+    // MARK: - 테이블뷰 구성
     func configureTableView() {
         self.navigationController?.navigationBar.tintColor = .black
         tableView.delegate = self
@@ -29,9 +31,24 @@ class WishListViewController: UIViewController {
         tableView.register(nibName, forCellReuseIdentifier: "WishListTableViewCell")
     }
     
+    // MARK: - 코어데이터 불러오기
     func loadWishList() {
         wishList = CoreDataManager.fetchCoreData()
         tableView.reloadData()
+    }
+    
+    // MARK: - Pull to Refresh
+    func setRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshFire), for: .valueChanged)
+        self.tableView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshFire() {
+        loadWishList()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
 }
 
@@ -46,7 +63,7 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.bind(wishList[indexPath.row])
         
-        // cell 버튼 삭제
+        // MARK: - cell 버튼 삭제
         cell.deleteHandler = { [weak self] in
             guard let self = self else { return }
             // 사용자에게 확인 메시지를 표시하는 알림 창 생성
