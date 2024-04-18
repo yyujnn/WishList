@@ -2,7 +2,7 @@
 //  Product+CoreDataProperties.swift
 //  WishList
 //
-//  Created by 정유진 on 2024/04/16.
+//  Created by 정유진 on 2024/04/18.
 //
 //
 
@@ -19,6 +19,7 @@ extension Product {
     @NSManaged public var id: Int64
     @NSManaged public var price: Double
     @NSManaged public var title: String?
+    @NSManaged public var brand: String?
 
 }
 

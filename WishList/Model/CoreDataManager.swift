@@ -32,6 +32,7 @@ class CoreDataManager {
         wishProduct.id = Int64(product.id)
         wishProduct.title = product.title
         wishProduct.price = product.price
+        wishProduct.brand = product.brand
         
         do {
             try context.save()

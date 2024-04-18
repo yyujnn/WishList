@@ -12,18 +12,24 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var buttonView: UIView!
     
-    let networkingManager = NetworkingManager()
     var currentProduct: RemoteProduct?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUI()
         fetchRemoteProduct()
         setRefreshControl()
+    }
+    
+    func setUI() {
+        buttonView.layer.borderWidth = 1
+        buttonView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3).cgColor
     }
     
     // MARK: - Pull to Refresh
@@ -68,7 +74,7 @@ class ViewController: UIViewController {
     
     // MARK: - 데이터 가져와 컴포넌트와 연결
     func fetchRemoteProduct() {
-        networkingManager.fetchRemoteProduct { result in
+        NetworkingManager.fetchRemoteProduct { result in
             switch result {
             case .success(let product):
                 // 현재 상품 업데이트
@@ -77,6 +83,7 @@ class ViewController: UIViewController {
                 // UI 요소들과 데이터를 연결하여 표시
                 DispatchQueue.main.async {
                     self.imageView.loadImage(url: product.thumbnail)
+                    self.brandLabel.text = product.brand
                     self.titleLabel.text = product.title
                     self.descriptionLabel.text = product.description
                     self.priceLabel.text = product.price.formatAsCurrency()

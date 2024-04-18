@@ -9,9 +9,11 @@ import UIKit
 
 class WishListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var cellImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,9 +25,15 @@ class WishListTableViewCell: UITableViewCell {
     }
     
     func bind(_ product: Product) {
-        idLabel.text = "[\(product.id)]"
-        titleLabel.text = product.title
-        priceLabel.text = product.price.formatAsCurrency()
+        self.idLabel.text = "[\(product.id)]"
+        self.titleLabel.text = product.title
+        self.priceLabel.text = product.price.formatAsCurrency()
+        self.brandLabel.text = product.brand
+        
+        NetworkingManager.fetchProductImage(id: Int(product.id)) { image in
+            DispatchQueue.main.async {
+                self.cellImageView.image = image
+            }
+        }
     }
-    
 }
