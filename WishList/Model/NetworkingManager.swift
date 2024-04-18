@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class NetworkingManager {
-    
+    // MARK: - fetchRemoteProduct
     static func fetchRemoteProduct(completion: @escaping (Result<RemoteProduct, Error>) -> Void) {
         let url = "https://dummyjson.com/products/"
         // URLSession 인스턴스 생성
@@ -38,7 +38,7 @@ class NetworkingManager {
             task.resume()
         }
     }
-    
+    // MARK: - fetchProductImage
     static func fetchProductImage(id: Int, completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: "https://cdn.dummyjson.com/product-images/\(id)/thumbnail.jpg") else { return }
         let task = URLSession.shared.dataTask(with: url) { (data, reponse, error) in

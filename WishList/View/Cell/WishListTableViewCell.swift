@@ -29,6 +29,7 @@ class WishListTableViewCell: UITableViewCell {
     @IBAction func tappedDeleteButton(_ sender: UIButton) {
         deleteHandler?()
     }
+    
     func bind(_ product: Product) {
         self.idLabel.text = "[\(product.id)]"
         self.titleLabel.text = product.title

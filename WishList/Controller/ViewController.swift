@@ -89,14 +89,6 @@ class ViewController: UIViewController {
         fetchRemoteProduct()
     }
     
-    // MARK: - 위시 리스트 보기 Btn
-    @IBAction func tappedPresentWishList(_ sender: UIButton) {
-        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "WishListViewController") else { return }
-        
-        self.modalPresentationStyle = .fullScreen
-        self.present(nextVC, animated: true)
-    }
-    
     // MARK: - 데이터 가져와 컴포넌트와 연결
     func fetchRemoteProduct() {
         NetworkingManager.fetchRemoteProduct { result in
