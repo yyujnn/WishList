@@ -50,13 +50,28 @@ class ViewController: UIViewController {
     @IBAction func tappedSaveProductButton(_ sender: UIButton) {
         guard let product = currentProduct else { return }
         print("위시리스트 담는 상품: \(product)")
-        CoreDataManager.saveWishProduct(product: product) { success in
-            if success {
-                print("상품이 위시 리스트에 추가되었습니다.")
-            } else {
-                print("상품을 위시 리스트에 추가하는 데 실패했습니다.")
+        
+        let alert = UIAlertController(title: "WISH LIST", message: "상품을 위시리스트에 추가하시겠습니까?", preferredStyle: .alert)
+        let addButton = UIAlertAction(title: "예", style: .default) { [weak self] _ in
+            CoreDataManager.saveWishProduct(product: product) { success in
+                if success {
+                    print("상품이 위시 리스트에 추가되었습니다.")
+                    
+                    guard let nextVC = self?.storyboard?.instantiateViewController(withIdentifier: "WishListViewController") else { return }
+                    
+                    self?.modalPresentationStyle = .fullScreen
+                    self?.present(nextVC, animated: true)
+                    
+                } else {
+                    print("상품을 위시 리스트에 추가하는 데 실패했습니다.")
+                }
             }
         }
+        let cancelButton = UIAlertAction(title: "아니오", style: .default)
+        
+        alert.addAction(cancelButton)
+        alert.addAction(addButton)
+        self.present(alert, animated: true)
     }
     
     // MARK: - 다른 상품 보기 Btn
