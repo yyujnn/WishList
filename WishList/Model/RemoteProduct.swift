@@ -15,4 +15,5 @@ struct RemoteProduct: Decodable {
     let description: String
     let price: Double
     let thumbnail: URL
+    let brand: String
 }

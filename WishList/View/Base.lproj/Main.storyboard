@@ -157,6 +157,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="brandLabel" destination="yP0-38-SBo" id="c52-HZ-k8i"/>
                         <outlet property="buttonView" destination="CeM-gi-au3" id="eaE-pi-Fwa"/>
                         <outlet property="descriptionLabel" destination="WO4-ra-LXI" id="bIa-KN-tke"/>
                         <outlet property="imageView" destination="kfU-08-92m" id="bVi-J1-BzD"/>
