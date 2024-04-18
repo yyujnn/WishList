@@ -49,6 +49,11 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+
+    
     // MARK: - cell 삭제
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
