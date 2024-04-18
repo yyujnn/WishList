@@ -15,15 +15,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var buttonView: UIView!
     
     let networkingManager = NetworkingManager()
     var currentProduct: RemoteProduct?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUI()
         fetchRemoteProduct()
         setRefreshControl()
+    }
+    
+    func setUI() {
+        buttonView.layer.borderWidth = 1
+        buttonView.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3).cgColor
     }
     
     // MARK: - Pull to Refresh

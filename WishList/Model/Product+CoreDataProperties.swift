@@ -19,6 +19,7 @@ extension Product {
     @NSManaged public var id: Int64
     @NSManaged public var price: Double
     @NSManaged public var title: String?
+    @NSManaged public var pirce: String?
 
 }
 
