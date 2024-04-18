@@ -15,6 +15,8 @@ class WishListTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var cellImageView: UIImageView!
     
+    var deleteHandler: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
@@ -24,6 +26,9 @@ class WishListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    @IBAction func tappedDeleteButton(_ sender: UIButton) {
+        deleteHandler?()
+    }
     func bind(_ product: Product) {
         self.idLabel.text = "[\(product.id)]"
         self.titleLabel.text = product.title

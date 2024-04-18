@@ -24,23 +24,32 @@ class CoreDataManager {
     // MARK: - SAVE: CoreData에 상품 저장
     static func saveWishProduct(product: RemoteProduct, completion: @escaping (Bool) -> Void) {
         guard let context = CoreDataManager.context else {
-            completion(false)
-            return
-        }
-        
-        let wishProduct = Product(context: context)
-        wishProduct.id = Int64(product.id)
-        wishProduct.title = product.title
-        wishProduct.price = product.price
-        wishProduct.brand = product.brand
-        
-        do {
-            try context.save()
-            completion(true)
-        } catch {
-            print("error: \(error.localizedDescription)")
-            completion(false)
-        }
+                completion(false)
+                return
+            }
+            
+            let fetchRequest = NSFetchRequest<Product>(entityName: "Product")
+            fetchRequest.predicate = NSPredicate(format: "id == %lld", product.id)
+            
+            do {
+                let products = try context.fetch(fetchRequest)
+                if let existingProduct = products.first {
+                    print("기존 데이터와 동일")
+                } else {
+                    // 기존 데이터가 없으면 새로 추가
+                    let wishProduct = Product(context: context)
+                    wishProduct.id = Int64(product.id)
+                    wishProduct.title = product.title
+                    wishProduct.price = product.price
+                    wishProduct.brand = product.brand
+                }
+                
+                try context.save()
+                completion(true)
+            } catch {
+                print("Error saving or updating product: \(error.localizedDescription)")
+                completion(false)
+            }
     }
 
     // MARK: - READ: CoreData에서 상품 정보 불러오기
