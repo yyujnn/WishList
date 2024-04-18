@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         print("위시리스트 담는 상품: \(product)")
         
         let alert = UIAlertController(title: "WISH LIST", message: "상품을 위시리스트에 추가하시겠습니까?", preferredStyle: .alert)
-        let addButton = UIAlertAction(title: "예", style: .default) { [weak self] _ in
+        let addAction = UIAlertAction(title: "예", style: .default) { [weak self] _ in
             CoreDataManager.saveWishProduct(product: product) { success in
                 if success {
                     print("상품이 위시 리스트에 추가되었습니다.")
@@ -67,10 +67,10 @@ class ViewController: UIViewController {
                 }
             }
         }
-        let cancelButton = UIAlertAction(title: "아니오", style: .default)
+        let cancelAction = UIAlertAction(title: "아니오", style: .default)
         
-        alert.addAction(cancelButton)
-        alert.addAction(addButton)
+        alert.addAction(cancelAction)
+        alert.addAction(addAction)
         self.present(alert, animated: true)
     }
     
