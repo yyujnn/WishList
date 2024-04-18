@@ -52,7 +52,6 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBrownColor"/>
                                         <constraints>
                                             <constraint firstItem="KPT-Iw-dcW" firstAttribute="leading" secondItem="nEP-jO-kug" secondAttribute="leading" constant="16" id="2yM-jG-mET"/>
                                             <constraint firstAttribute="trailing" secondItem="KPT-Iw-dcW" secondAttribute="trailing" constant="16" id="3dE-58-4U1"/>
@@ -135,6 +134,7 @@
                         <outlet property="descriptionLabel" destination="WO4-ra-LXI" id="bIa-KN-tke"/>
                         <outlet property="imageView" destination="kfU-08-92m" id="bVi-J1-BzD"/>
                         <outlet property="priceLabel" destination="ZrD-8O-5k1" id="huV-ct-oGa"/>
+                        <outlet property="scrollView" destination="9VN-a4-iMx" id="Nht-lR-VEO"/>
                         <outlet property="titleLabel" destination="OOv-4u-DIJ" id="n9D-mj-nvk"/>
                     </connections>
                 </viewController>
@@ -171,9 +171,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
