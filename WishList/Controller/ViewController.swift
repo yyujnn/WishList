@@ -35,7 +35,6 @@ class ViewController: UIViewController {
                 print("상품을 위시 리스트에 추가하는 데 실패했습니다.")
             }
         }
-        // CoreDataManager.fetchCoreData()
     }
     
     // MARK: - 다른 상품 보기 Btn
