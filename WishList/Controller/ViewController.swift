@@ -76,6 +76,16 @@ class ViewController: UIViewController {
     
     // MARK: - 다른 상품 보기 Btn
     @IBAction func tappedSkipButton(_ sender: UIButton) {
+        // 그림자 효과 추가
+        sender.layer.shadowColor = UIColor.black.cgColor
+        sender.layer.shadowOpacity = 0.8
+        sender.layer.shadowOffset = CGSize(width: 0, height: 2)
+        sender.layer.shadowRadius = 4
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            sender.layer.shadowOpacity = 0 // 그림자 효과 제거
+        }
+        
         fetchRemoteProduct()
     }
     
