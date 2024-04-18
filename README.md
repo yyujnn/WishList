@@ -11,12 +11,17 @@
 **`step1`**
 - JSON Dummy API를 활용하여, 상품 정보 노출
 - URLSession 사용
+- - CoreData 모델링
+
+<br>
 
 **`step2`**
 - CoreData 사용
   - Create, Read, Delete
 
+<br>
+
 **`step3`**
--  ScrollView
+-  ScrollView 적용
 -  Pull to refresh 기능
 
