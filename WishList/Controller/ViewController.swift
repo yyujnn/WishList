@@ -9,7 +9,8 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -22,6 +23,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         fetchRemoteProduct()
+        setRefreshControl()
+    }
+    
+    // MARK: - Pull to Refresh
+    func setRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshFire), for: .valueChanged)
+        self.scrollView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshFire() {
+        fetchRemoteProduct()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.scrollView.refreshControl?.endRefreshing()
+        }
     }
     
     // MARK: -  위시 리스트 담기 Btn
@@ -35,7 +51,6 @@ class ViewController: UIViewController {
                 print("상품을 위시 리스트에 추가하는 데 실패했습니다.")
             }
         }
-        // CoreDataManager.fetchCoreData()
     }
     
     // MARK: - 다른 상품 보기 Btn

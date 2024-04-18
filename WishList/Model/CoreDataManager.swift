@@ -10,7 +10,7 @@ import CoreData
 
 class CoreDataManager {
     
-    static let entityName = "Product" // ProductEntity?
+    static let entityName = "Product"
     
     // viewContext 가져오기 --> CRUD
     static let context: NSManagedObjectContext? = {

@@ -53,7 +53,6 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // 코어 데이터에서 데이터에서 셀 삭제
-            // 선택한 셀 id 찾기!..
             let selectedProduct = wishList[indexPath.row]
             let productId = selectedProduct.id
             
